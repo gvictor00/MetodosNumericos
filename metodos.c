@@ -90,30 +90,41 @@ int main()
     printf("O numero de subdivisoes: ");
         scanf("%d", &n);																	//User define o número de subdvisoes e o programa executa.
         printf("\n");
+        printf("A solucao analitica: %.5lf\n\n", solucao());
 
-        if ( n > 0 ) {
-        	printf("A solucao: %.5lf\n\n", solucao());
-
-        	printf("Método\t\tSolução\t\tErro\n");
-        	printf("---------------------------------------------\n");
-
-        	printf("Euler:\t\t");
-        	printf("%.5lf\t", metodo_euler(n));
-        	erro = fabs(solucao() - metodo_euler(n));
-            printf("%.5lf\n", erro);												//Cálculo do erro feito tendo como base a solucao analitica
-        	printf("---------------------------------------------\n");
-
-            printf("Euler Modif:\t");
-            printf("%.5lf\t", metodo_euler_modificado(n));
-            erro = fabs(solucao() - metodo_euler_modificado(n));
-            printf("%.5lf\n", erro);
-        	printf("---------------------------------------------\n");
-
-            printf("Runge-Kutta:\t");
-            printf("%.5lf\t", metodo_runge_kutta(n));
-            erro = fabs(solucao() - metodo_runge_kutta(n));
-            printf("%.5lf\n", erro);
-        }
+        printf("  n\tEuler\t\tEuler Modif\tRunge-Kutta\n");
         printf("---------------------------------------------\n");
+        do{
+
+        	printf("%d\t", n);
+        	printf("%.5lf\t", metodo_euler(n));
+        	//erro = fabs(solucao() - metodo_euler(n));
+           // printf("%.5lf\t", erro);												//Cálculo do erro feito tendo como base a solucao analitica
+
+        	printf("%.5lf\t", metodo_euler_modificado(n));
+        	//erro = fabs(solucao() - metodo_euler_modificado(n));
+           // printf("%.5lf\t", erro);
+
+        	printf("%.5lf\t", metodo_runge_kutta(n));
+        	//erro = fabs(solucao() - metodo_runge_kutta(n));
+            //printf("%.5lf\n", erro);
+        	erro = fabs(solucao() - metodo_euler(n));
+        	if(erro < 10){
+        		printf("\n\t%.5f\t\t", fabs(solucao() - metodo_euler(n)));
+        	}else{
+        		printf("\n\t%.5f\t", fabs(solucao() - metodo_euler(n)));
+        	}
+        	
+        	erro = fabs(solucao() - metodo_euler_modificado(n));
+        	if(erro < 10)
+        	{
+        		printf("%.5f\t\t", erro);
+        	}else{
+        		printf("%.5f\t", erro);
+        	}
+        	printf("%.5f\n", fabs(solucao() - metodo_runge_kutta(n)));
+        	n=n/2;
+        	printf("---------------------------------------------\n");
+        }while(n>0);
         return 0;
     }

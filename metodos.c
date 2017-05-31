@@ -1,3 +1,7 @@
+/*
+	Estou mantendo o código no GitHub https://github.com/gvictor00/MetodosNumericos
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -10,7 +14,7 @@ double ti = 0;  							// Tempo inicial
 ///////////////////////////////////////////////////////
 
 double solucao(){							//Solucao Analítica do problema de Dinamica populacional
-    return (C*exp(k*t));
+	return (C*exp(k*t));
 }
 
 /*Solução obtida através da resolucao de uma equacao diferencial de primeira ordem. 
@@ -22,89 +26,94 @@ double y_inicial(){							//Y inicial necessário para os cálculos dos métodos
 
 double f (double X, double Y)				//Função F referente a equação diferencial do problema de Dinamica Populacional
 {
-    return (k*Y);
+	return (k*Y);
 }
 
 double metodo_euler ( int n ) {  			//Método de Euler
-    double Y = y_inicial();
-    double X = ti;
-    double h = (t-ti)/n;
-    int i;
+	double Y = y_inicial();
+	double X = ti;
+	double h = (t-ti)/n;
+	int i;
 
-    for ( i = 0; i < n; i++ ) {
-        Y += (h*f(X,Y));
-        X += h;
-    }
+	for ( i = 0; i < n; i++ ) {
+		Y += (h*f(X,Y));
+		X += h;
+	}
 
-    return Y;
+	return Y;
 }
 
 double metodo_euler_modificado ( int n ) { 	//Euler Modificado
-    double Y_atual = y_inicial();
-    double X_atual = ti;
-    double Y_previsao;
-    double X_proximo;
-    double h = (t-ti)/n;
-    int i;
+	double Y_atual = y_inicial();
+	double X_atual = ti;
+	double Y_previsao;
+	double X_proximo;
+	double h = (t-ti)/n;
+	int i;
 
-    for ( i = 0; i < n; i++ ) {
-        Y_previsao = Y_atual + h*f(X_atual, Y_atual);
-        X_proximo = X_atual + h;
-        Y_atual += (h/2)*(f(X_atual, Y_atual) + f(X_proximo, Y_previsao));
-        X_atual += h;
-    }
+	for ( i = 0; i < n; i++ ) {
+		Y_previsao = Y_atual + h*f(X_atual, Y_atual);
+		X_proximo = X_atual + h;
+		Y_atual += (h/2)*(f(X_atual, Y_atual) + f(X_proximo, Y_previsao));
+		X_atual += h;
+	}
 
-    return Y_atual;
+	return Y_atual;
 }
 
 double metodo_runge_kutta ( int n ) { 		//Runge-Kutta
-    double Y = y_inicial();
-    double X = ti;
-    double h = (t-ti)/n;
-    double k1, k2, k3, k4;
-    int i;
+	double Y = y_inicial();
+	double X = ti;
+	double h = (t-ti)/n;
+	double k1, k2, k3, k4;
+	int i;
 
-    for ( i = 0; i < n; i++ ) {
-        k1 = f(X, Y);
-        k2 = f(X + (h/2), Y + ((h/2)*k1));
-        k3 = f(X + (h/2), Y + ((h/2)*k2));
-        k4 = f(X + h, Y + (h*k3));
+	for ( i = 0; i < n; i++ ) {
+		k1 = f(X, Y);
+		k2 = f(X + (h/2), Y + ((h/2)*k1));
+		k3 = f(X + (h/2), Y + ((h/2)*k2));
+		k4 = f(X + h, Y + (h*k3));
 
-        X += h;
-        Y += (h/6)*(k1 + (2*k2) + (2*k3) + k4);
-    }
+		X += h;
+		Y += (h/6)*(k1 + (2*k2) + (2*k3) + k4);
+	}
 
-    return Y;
+	return Y;
 }
 
 int main()
 {
-    int n;
+	int n;
     double erro; 							//Considerar erro ≤ 0,0001 
 
-    //do {
-        printf("---------------------------------------------\n");
-        printf("O numero de subdivisoes: ");
+    printf("---------------------------------------------\n");
+    printf("O numero de subdivisoes: ");
         scanf("%d", &n);																	//User define o número de subdvisoes e o programa executa.
         printf("\n");
 
         if ( n > 0 ) {
-            printf("A solucao: %.5lf\n\n", solucao());
+        	printf("A solucao: %.5lf\n\n", solucao());
 
-            printf("Metodo de Euler: %.5lf\n", metodo_euler(n));
-            erro = fabs(solucao() - metodo_euler(n));
-            printf("O erro: %.5lf\n\n", erro);												//Cálculo do erro feito tendo como base a solucao analitica
+        	printf("Método\t\tSolução\t\tErro\n");
+        	printf("---------------------------------------------\n");
 
-            printf("Metodo modificado de Euler: %.5lf\n", metodo_euler_modificado(n));
+        	printf("Euler:\t\t");
+        	printf("%.5lf\t", metodo_euler(n));
+        	erro = fabs(solucao() - metodo_euler(n));
+            printf("%.5lf\n", erro);												//Cálculo do erro feito tendo como base a solucao analitica
+        	printf("---------------------------------------------\n");
+
+            printf("Euler Modif:\t");
+            printf("%.5lf\t", metodo_euler_modificado(n));
             erro = fabs(solucao() - metodo_euler_modificado(n));
-            printf("O erro: %.5lf\n\n", erro);
+            printf("%.5lf\n", erro);
+        	printf("---------------------------------------------\n");
 
-            printf("Metodo de Runge Kutta: %.5lf\n", metodo_runge_kutta(n));
+            printf("Runge-Kutta:\t");
+            printf("%.5lf\t", metodo_runge_kutta(n));
             erro = fabs(solucao() - metodo_runge_kutta(n));
-            printf("O erro: %.5lf\n", erro);
+            printf("%.5lf\n", erro);
         }
         printf("---------------------------------------------\n");
-  //   } while ( n > 0 );
-
-    return 0;
-}
+        return 0;
+    }

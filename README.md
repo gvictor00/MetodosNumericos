@@ -32,4 +32,5 @@ O Corretor:<br>
 ![PM](http://mathfaculty.fullerton.edu/mathews/n2003/abmmethod/AdamsBashforthMod/Images/AdamsBashforthMod_gr_18.gif)
 ## As soluções
 ### Condições Iniciais
-Tomando os valores de C = 3000, t = 2 e k = 0.5493 temos as seguintes soluções para os métodos apresentados:
+Tomando os valores de C = 3000, t = 2, k = 0.5493 e 100 subdivisões temos as seguintes soluções para os métodos apresentados:
+![Resultados](/resultados.jpg?raw=true)

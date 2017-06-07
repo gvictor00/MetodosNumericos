@@ -12,13 +12,12 @@ double t = 2;   							// Tempo
 double k = 0.5493;  						//Constante  (Taxa de crescimento/decaimento)
 double ti = 0;  							// Tempo inicial
 ///////////////////////////////////////////////////////
+int n = 0;
 
-double solucao(){							//Solucao Analítica do problema de Dinamica populacional
+//Solucao Analítica do problema de Dinamica populacional
+double solucao(){
 	return (C*exp(k*t));
 }
-
-/*Solução obtida através da resolucao de uma equacao diferencial de primeira ordem. 
-  Foi utilizado a estratégia do fator integrante. Maiores detalhes estão descritos no relatório*/
 
 double y_inicial(){							//Y inicial necessário para os cálculos dos métodos
 	return (C*exp(k*ti));
@@ -29,10 +28,15 @@ double f (double X, double Y)				//Função F referente a equação diferencial 
 	return (k*Y);
 }
 
-double metodo_euler ( int n ) {  			//Método de Euler
+double passo()
+{
+	return (t-ti)/n;
+}
+
+double metodo_euler () {  			//Método de Euler
 	double Y = y_inicial();
 	double X = ti;
-	double h = (t-ti)/n;
+	double h = passo();
 	int i;
 
 	for ( i = 0; i < n; i++ ) {
@@ -43,12 +47,12 @@ double metodo_euler ( int n ) {  			//Método de Euler
 	return Y;
 }
 
-double metodo_euler_modificado ( int n ) { 	//Euler Modificado
+double metodo_euler_modificado () { 	//Euler Modificado
 	double Y_atual = y_inicial();
 	double X_atual = ti;
 	double Y_previsao;
 	double X_proximo;
-	double h = (t-ti)/n;
+	double h = passo();
 	int i;
 
 	for ( i = 0; i < n; i++ ) {
@@ -61,10 +65,10 @@ double metodo_euler_modificado ( int n ) { 	//Euler Modificado
 	return Y_atual;
 }
 
-double metodo_runge_kutta ( int n ) { 		//Runge-Kutta
+double metodo_runge_kutta () { 		//Runge-Kutta
 	double Y = y_inicial();
 	double X = ti;
-	double h = (t-ti)/n;
+	double h = passo();
 	double k1, k2, k3, k4;
 	int i;
 
@@ -81,50 +85,118 @@ double metodo_runge_kutta ( int n ) { 		//Runge-Kutta
 	return Y;
 }
 
+double metodo_passos_multiplos() 	//Adams-Bashforth-Moulton 4a Ordem
+{
+	//Variaveis auxiliares
+	int j = 0;
+	double K1 = 0, K2 = 0, K3 = 0, K4 = 0;
+
+	//Tamanho do passo
+	double h = passo();
+
+	//Vetor de soluções
+	double x[n+1], y[n+1]; 
+
+	for(j=0;j<n+1;j++)
+	{
+		x[j]=0;
+		y[j]=0;
+	}
+	
+	//Condição Inicial
+	x[0] = ti;
+	y[0] = y_inicial();
+
+	// Calcula os 3 proximos valores (x,y)
+	for(j=0;j<3;j++)
+	{
+		// Runge-Kutta 4a ordem
+		//===========================
+		K1 = f(x[j], y[j]);
+		K2 = f(x[j]+h/2, y[j]+(h/2)*K1);
+		K3 = f(x[j]+h/2, y[j]+(h/2)*K2);
+		K4 = f(x[j]+h, y[j]+h*K3);
+		x[j+1] = x[j] + h;
+		y[j+1] = y[j] + (h/6)*(K1 + 2*K2 + 2*K3 + K4);
+		//=========================	
+	}
+
+	// Etapa para cálculo Preditor-Corretor
+	double yp, yc;
+
+	for(j=3;j<n;j++)
+	{
+		x[j+1] = x[j] + h;
+		// Preditor
+		yp = y[j] + (h/24)*(55*f(x[j],y[j]) - 59*f(x[j-1],y[j-1]) + 37*f(x[j-2],y[j-2]) - 9*f(x[j-3],y[j-3]));
+		// Corretor
+		yc = y[j] + (h/24)*(9*f(x[j+1],yp) + 19*f(x[j],y[j]) - 5*f(x[j-1],y[j-1]) + f(x[j-2],y[j-2]));
+		y[j+1] = y[j] + (h/24)*(9*f(x[j+1],yc) + 19*f(x[j],y[j]) - 5*f(x[j-1],y[j-1]) + f(x[j-2],y[j-2]));
+	}
+
+	return y[n];
+}
+
 int main()
 {
-	int n;
     double erro; 							//Considerar erro ≤ 0,0001 
-
-    printf("---------------------------------------------\n");
+    double res_e, res_em, res_pm, res_rk;
+    double sol;
+    printf("--------------------------------------------------------------------\n");
     printf("O numero de subdivisoes: ");
-        scanf("%d", &n);																	//User define o número de subdvisoes e o programa executa.
-        printf("\n");
-        printf("A solucao analitica: %.5lf\n\n", solucao());
+    scanf("%d", &n);																	//User define o número de subdvisoes e o programa executa.
+    printf("\n");
 
-        printf("  n\tEuler\t\tEuler Modif\tRunge-Kutta\n");
-        printf("---------------------------------------------\n");
-        do{
+    sol = solucao();
+    printf("A solucao analitica: %.5lf\n\n", sol);
 
-        	printf("%d\t", n);
-        	printf("%.5lf\t", metodo_euler(n));
-        	//erro = fabs(solucao() - metodo_euler(n));
-           // printf("%.5lf\t", erro);												//Cálculo do erro feito tendo como base a solucao analitica
+    printf("  n\tEuler\t\tEuler Modif\tPassos-Mult.\tRunge-Kutta\n");
+    printf("--------------------------------------------------------------------\n");
+    do{
 
-        	printf("%.5lf\t", metodo_euler_modificado(n));
-        	//erro = fabs(solucao() - metodo_euler_modificado(n));
-           // printf("%.5lf\t", erro);
+    	printf("%d\t", n);
+    	
+    	res_e = metodo_euler();
+    	res_em = metodo_euler_modificado();
+    	res_pm = metodo_passos_multiplos();
+    	res_rk = metodo_runge_kutta();
 
-        	printf("%.5lf\t", metodo_runge_kutta(n));
-        	//erro = fabs(solucao() - metodo_runge_kutta(n));
-            //printf("%.5lf\n", erro);
-        	erro = fabs(solucao() - metodo_euler(n));
-        	if(erro < 10){
-        		printf("\n\t%.5f\t\t", fabs(solucao() - metodo_euler(n)));
-        	}else{
-        		printf("\n\t%.5f\t", fabs(solucao() - metodo_euler(n)));
-        	}
-        	
-        	erro = fabs(solucao() - metodo_euler_modificado(n));
-        	if(erro < 10)
-        	{
-        		printf("%.5f\t\t", erro);
-        	}else{
-        		printf("%.5f\t", erro);
-        	}
-        	printf("%.5f\n", fabs(solucao() - metodo_runge_kutta(n)));
-        	n=n/2;
-        	printf("---------------------------------------------\n");
-        }while(n>0);
-        return 0;
-    }
+    	printf("%.5lf\t%.5lf\t%.5lf\t%.5lf\t\n",res_e,res_em,res_pm,res_rk);
+
+    	erro = fabs(sol - res_e);
+    	if(erro < 10){
+
+    		printf("\t%.5f\t\t", erro);
+    	}
+    	else
+    	{
+    		printf("\t%.5f\t", erro);
+    	}
+    	
+    	erro = fabs(sol-res_em);
+    	if(erro < 10)
+    	{
+    		printf("%.5f\t\t", erro);
+    	}
+    	else
+    	{
+    		printf("%.5f\t", erro);
+    	}
+
+    	erro = fabs(sol-res_pm);
+    	if(erro < 10)
+    	{
+    		printf("%.5f\t\t", erro);
+    	}
+    	else
+    	{
+    		printf("%.5f\t", erro);
+    	}
+
+    	printf("%.5f\n", fabs(sol-res_rk));
+    	n=n/2;
+
+    printf("--------------------------------------------------------------------\n");
+    }while(n>0);
+    return 0;
+}

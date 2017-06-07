@@ -11,4 +11,4 @@ O Malthusianismo é uma teoria demográfica criada pelo economista inglês Thoma
 
 O modelo mais simples de crescimento populacional é aquele em que se supõe que a taxa de crescimento de uma população dx/dt é proporcional à população presente naquele instante x(t), ou seja, quanto mais pessoas houver em um instante (t), mais pessoas existirão
 
-![Equation](https://github.com/gvictor00/MetodosNumericos/dinamica_populacional)
+![Equation](https://drive.google.com/file/d/0B7aCrClbRngyQWZ2d1hMamJib28/view?usp=sharing)

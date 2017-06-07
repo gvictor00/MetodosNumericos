@@ -16,9 +16,20 @@ O modelo mais simples de crescimento populacional é aquele em que se supõe que
 ## Os métodos
 ### Método de Euler 
 Suponha que queremos aproximar a solução de um problema de valor inicial:
-![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/823a0cbb6755ef8910cb3bb018d11411e81e4120?raw=true)
-Escolhendo um valor para h {\displaystyle h} h para o tamanho de cada passo e atribuindo a cada passo um ponto dentro do intervalo, temos que t n = t 0 + n h {\displaystyle t_{n}=t_{0}+nh} {\displaystyle t_{n}=t_{0}+nh}. Nisso, o próximo passo t n + 1 {\displaystyle t_{n+1}} t_{n+1} a partir do anterior t n {\displaystyle t_{n}} t_n fica definido como t n + 1 = t n + h {\displaystyle t_{n+1}=t_{n}+h} {\displaystyle t_{n+1}=t_{n}+h}.
+![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/823a0cbb6755ef8910cb3bb018d11411e81e4120?raw=true) <br>
 
+Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um ponto dentro do intervalo, temos que tn = t0 + nh. Nisso, o próximo passo tn+1 a partir do anterior tn fica definido tn+1 = tn + h, então:<br>
+![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/269f6c656eab53584639f205ecfe88b628af701a)
+
+### Runge Kutta
+![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/d8534f269d223b247698d487d6b93eef6a1070df)<br>
+![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/42c75230fa264441ebc3725e456ea17147a604c3)
+
+### Passo Múltiplos
+O Preditor:<br>
+![PM](http://mathfaculty.fullerton.edu/mathews/n2003/abmmethod/AdamsBashforthMod/Images/AdamsBashforthMod_gr_17.gif)<br>
+O Corretor:<br>
+![PM](http://mathfaculty.fullerton.edu/mathews/n2003/abmmethod/AdamsBashforthMod/Images/AdamsBashforthMod_gr_18.gif)
 ## As soluções
 ### Condições Iniciais
 Tomando os valores de C = 3000, t = 2 e k = 0.5493 temos as seguintes soluções para os métodos apresentados:

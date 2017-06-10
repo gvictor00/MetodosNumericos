@@ -35,7 +35,7 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 
 ### Método de Euler Modificado 
 É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br>
-<img src="https://s16.postimg.org/3yyji0tu9/image.jpg" Alt="Metodo_Euler_Modificado" height="150">
+<img src="https://s16.postimg.org/3yyji0tu9/image.jpg" Alt="Metodo_Euler_Modificado" height="80">
 
 ### Runge Kutta
 O método mais preciso e mais utilizado é o método de Runge-Kutta de quarto grau. Ele nasce do método de Euler, sendo o Runge-Kutta de primeiro grau o próprio método de Euler. O Runge-Kutta de segundo grau é o método de Euler melhorado, como veremos a seguir. Concluiremos a seção com o Runge-Kutta de quarto grau, que é o método mais preciso para a obtenção de soluções aproximadas para um problema de valor inicial. Cada método do Runge-Kutta é uma comparação com um polinômio de Taylor conveniente, daí que surgem os graus em seus nomes. Quando comparado a um polinômio de grau 1, teremos o Runge-Kutta de primeiro grau. Ao fazermos essa comparação, o cálculo da derivada é eliminado, fazendo-se assim avaliações da função f em cada iteração.
@@ -48,7 +48,7 @@ Os métodos que veremos aqui, chamados de passos múltiplos, são bem precisos, 
 (tn-3,Xn-3), (tn-2,Xn-2), (tn-1,Xn-1), (tn,Xn)<br>
 Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. Utilizando a fórmula de Adams-Bashforth, conseguimos estimar o valor de xn+1. Usando este valor encontrado, calculamos fn+1 e colocamos no método de Adams-Moulton, corrigindo o valor de xn+1. Dessa forma não teremos mais um método implícito.
 <br>
-<img src="https://s16.postimg.org/g23v5l4wh/image.jpg" Alt="Metodo_Passos_Multiplos" height="150">
+<img src="https://s16.postimg.org/g23v5l4wh/image.jpg" Alt="Metodo_Passos_Multiplos" height="100">
 
 ## As soluções
 ### Condições Iniciais

@@ -22,15 +22,15 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 ![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/269f6c656eab53584639f205ecfe88b628af701a)
 
 ### Método de Euler Modificado 
-O método de Euler Modificado é um aperfeiçoamento do método de Euler simples. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem.
-![Metetodo_Euler_Modificado](https://s14.postimg.org/tp5vut5b1/image.jpg)
+O método de Euler Modificado é um aperfeiçoamento do método de Euler simples. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br>
+![Metetodo_Euler_Modificado](https://s1.postimg.org/a94eizkmj/image.jpg)
 
 ### Runge Kutta
 ![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/d8534f269d223b247698d487d6b93eef6a1070df)<br>
 ![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/42c75230fa264441ebc3725e456ea17147a604c3)
 
 ### Passo Múltiplos
-![PM](https://s14.postimg.org/5zgg646xp/image.jpg)
+![PM](https://s1.postimg.org/y1ib89c17/image.jpg)
 ## As soluções
 ### Condições Iniciais
 Tomando os valores de C = 3000, t = 2, k = 0.5493 e 100 subdivisões temos as seguintes soluções para os métodos apresentados:<br>

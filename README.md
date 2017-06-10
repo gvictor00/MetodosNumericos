@@ -20,6 +20,7 @@ Suponha que queremos aproximar a solução de um problema de valor inicial:
 Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um ponto dentro do intervalo, temos que tn = t0 + nh. Nisso, o próximo passo tn+1 a partir do anterior tn fica definido tn+1 = tn + h, então:<br>
 ![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/269f6c656eab53584639f205ecfe88b628af701a)
 <br>
+<br>
 <b>Algoritmo do Método de Euler</b><br>
 1. Entre com a condição inicial x(t0) = x0;<br>
 2. Coloque o número de iterações desejadas n;<br>
@@ -34,7 +35,7 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 
 ### Método de Euler Modificado 
 É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br>
-![Metetodo_Euler_Modificado](https://s16.postimg.org/3yyji0tu9/image.jpg?raw=true)
+![Metetodo_Euler_Modificado](https://s16.postimg.org/3yyji0tu9/image.jpg)
 
 ### Runge Kutta
 O método mais preciso e mais utilizado é o método de Runge-Kutta de quarto grau. Ele nasce do método de Euler, sendo o Runge-Kutta de primeiro grau o próprio método de Euler. O Runge-Kutta de segundo grau é o método de Euler melhorado, como veremos a seguir. Concluiremos a seção com o Runge-Kutta de quarto grau, que é o método mais preciso para a obtenção de soluções aproximadas para um problema de valor inicial. Cada método do Runge-Kutta é uma comparação com um polinômio de Taylor conveniente, daí que surgem os graus em seus nomes. Quando comparado a um polinômio de grau 1, teremos o Runge-Kutta de primeiro grau. Ao fazermos essa comparação, o cálculo da derivada é eliminado, fazendo-se assim avaliações da função f em cada iteração.
@@ -47,7 +48,7 @@ Os métodos que veremos aqui, chamados de passos múltiplos, são bem precisos, 
 (tn-3,Xn-3), (tn-2,Xn-2), (tn-1,Xn-1), (tn,Xn)<br>
 Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. Utilizando a fórmula de Adams-Bashforth, conseguimos estimar o valor de xn+1. Usando este valor encontrado, calculamos fn+1 e colocamos no método de Adams-Moulton, corrigindo o valor de xn+1. Dessa forma não teremos mais um método implícito.
 <br>
-![PM](https://s16.postimg.org/g23v5l4wh/image.jpg?raw=true)
+![PM](https://s16.postimg.org/g23v5l4wh/image.jpg)
 ## As soluções
 ### Condições Iniciais
 Tomando os valores de C = 3000, t = 2, k = 0.5493 e 100 subdivisões temos as seguintes soluções para os métodos apresentados:<br>

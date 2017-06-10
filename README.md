@@ -21,6 +21,10 @@ Suponha que queremos aproximar a solução de um problema de valor inicial:
 Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um ponto dentro do intervalo, temos que tn = t0 + nh. Nisso, o próximo passo tn+1 a partir do anterior tn fica definido tn+1 = tn + h, então:<br>
 ![Metodo_Euler](https://wikimedia.org/api/rest_v1/media/math/render/svg/269f6c656eab53584639f205ecfe88b628af701a)
 
+### Método de Euler Modificado 
+O método de Euler Modificado é um aperfeiçoamento do método de Euler simples. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem.
+![Metetodo_Euler_Modificado](https://drive.google.com/file/d/0B7aCrClbRngyaC13b0NxSnlQdHc/view?usp=sharing)
+
 ### Runge Kutta
 ![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/d8534f269d223b247698d487d6b93eef6a1070df)<br>
 ![Runge-Kutta](https://wikimedia.org/api/rest_v1/media/math/render/svg/42c75230fa264441ebc3725e456ea17147a604c3)

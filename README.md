@@ -47,11 +47,11 @@ O método mais preciso e mais utilizado é o método de Runge-Kutta de quarto gr
 Os métodos que veremos aqui, chamados de passos múltiplos, são bem precisos, porém eles necessitam de conhecimento prévio de alguns pontos da solução. Assim, os métodos e passos múltiplos são apropriados para os casos em que já se conhece alguns pontos do problema. Este método é uma combinação da fórmula de Adams-Bashforth e  Adams-Moulton de quarto grau. Ambas são de passos múltiplos, mas a diferença é que a primeira é uma fórmula explícita e a segunda implícita. O método de previsão e correção é a combinação desses dois métodos. Portanto, é necessário conhecer a priori quatro pontos:<br>
 (tn-3,Xn-3), (tn-2,Xn-2), (tn-1,Xn-1), (tn,Xn)<br>
 Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. Utilizando a fórmula de Adams-Bashforth, conseguimos estimar o valor de xn+1. Usando este valor encontrado, calculamos fn+1 e colocamos no método de Adams-Moulton, corrigindo o valor de xn+1. Dessa forma não teremos mais um método implícito.
-<br>
-O Preditor <br>	
+<br><br>
+O Preditor: <br>	
 <img src="http://www.sciweavers.org/tex2img.php?eq=P_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28-9f_k_-_3%20%2B%2037f_k_-_2%20-%2059f_k_-_1%20%2B%2055f_k%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="P_k_+_1 = Y_k + \frac{h}{24}(-9f_k_-_3 + 37f_k_-_2 - 59f_k_-_1 + 55f_k)" width="411" height="43" /><br>
-O Corretor <br>
-<img src="http://www.sciweavers.org/tex2img.php?eq=Y_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28f_k_-_2%20-%205f_k_-_1%20%2B%2019f_k%20%2B%209f%28t_k_%2B_1%2CP_k_%2B_1%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" /> 
+O Corretor: <br>
+<img src="http://latex.codecogs.com/gif.latex?Y_%7Bk&plus;1%7D%3DY_k&plus;%5Cfrac%7Bh%7D%7B24%7D%28f_%7Bk-2%7D-5f_%7Bk-1%7D&plus;19f_k&plus;9f%28t_%7Bk&plus;1%7D%2CP_%7Bk&plus;1%7D%29%29" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" />
 
 ## As soluções
 ### Condições Iniciais

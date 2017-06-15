@@ -35,7 +35,7 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 
 ### Método de Euler Modificado 
 É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br>
-<img src="https://s16.postimg.org/3yyji0tu9/image.jpg" Alt="Metodo_Euler_Modificado" height="50">
+<img src="http://www.sciweavers.org/tex2img.php?eq=Y_m_%2B_1%20%3D%20Y_m%20%2B%20%5Cfrac%7Bf_m%2Ah%7D%7B2%7D%20%2B%20%5Cfrac%7Bf%28t_m%2Bh%2CY_m%20%2B%20f%28t_m%2Cy_m%29%29%2Ah%7D%7B2%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_m_+_1 = Y_m + \frac{f_m*h}{2} + \frac{f(t_m+h,Y_m + f(t_m,y_m))*h}{2}" width="421" height="43" />
 
 ### Runge Kutta
 O método mais preciso e mais utilizado é o método de Runge-Kutta de quarto grau. Ele nasce do método de Euler, sendo o Runge-Kutta de primeiro grau o próprio método de Euler. O Runge-Kutta de segundo grau é o método de Euler melhorado, como veremos a seguir. Concluiremos a seção com o Runge-Kutta de quarto grau, que é o método mais preciso para a obtenção de soluções aproximadas para um problema de valor inicial. Cada método do Runge-Kutta é uma comparação com um polinômio de Taylor conveniente, daí que surgem os graus em seus nomes. Quando comparado a um polinômio de grau 1, teremos o Runge-Kutta de primeiro grau. Ao fazermos essa comparação, o cálculo da derivada é eliminado, fazendo-se assim avaliações da função f em cada iteração.

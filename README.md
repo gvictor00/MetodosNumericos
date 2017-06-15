@@ -51,7 +51,7 @@ Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. U
 O Preditor <br>	
 <img src="http://www.sciweavers.org/tex2img.php?eq=P_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28-9f_k_-_3%20%2B%2037f_k_-_2%20-%2059f_k_-_1%20%2B%2055f_k%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="P_k_+_1 = Y_k + \frac{h}{24}(-9f_k_-_3 + 37f_k_-_2 - 59f_k_-_1 + 55f_k)" width="411" height="43" /><br>
 O Corretor <br>
-<img src="http://www.sciweavers.org/tex2img.php?eq=Y_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28f_k_-_2%20-%205f_k_-_1%20%2B%2019f_k%20%2B%209f%28t_k_%2B_1%2CP_k_%2B_1%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" />
+<img src="http://www.sciweavers.org/tex2img.php?eq=Y_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28f_k_-_2%20-%205f_k_-_1%20%2B%2019f_k%20%2B%209f%28t_k_%2B_1%2CP_k_%2B_1%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" /> 
 
 ## As soluções
 ### Condições Iniciais

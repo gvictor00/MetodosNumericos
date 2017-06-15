@@ -34,7 +34,7 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 6. Imprima os pontos (t(i), x(i)).
 
 ### Método de Euler Modificado 
-É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br>
+É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br><br>
 <img src="http://www.sciweavers.org/tex2img.php?eq=Y_m_%2B_1%20%3D%20Y_m%20%2B%20%5Cfrac%7Bf_m%2Ah%7D%7B2%7D%20%2B%20%5Cfrac%7Bf%28t_m%2Bh%2CY_m%20%2B%20f%28t_m%2Cy_m%29%29%2Ah%7D%7B2%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_m_+_1 = Y_m + \frac{f_m*h}{2} + \frac{f(t_m+h,Y_m + f(t_m,y_m))*h}{2}" width="421" height="43" />
 
 ### Runge Kutta
@@ -48,7 +48,10 @@ Os métodos que veremos aqui, chamados de passos múltiplos, são bem precisos, 
 (tn-3,Xn-3), (tn-2,Xn-2), (tn-1,Xn-1), (tn,Xn)<br>
 Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. Utilizando a fórmula de Adams-Bashforth, conseguimos estimar o valor de xn+1. Usando este valor encontrado, calculamos fn+1 e colocamos no método de Adams-Moulton, corrigindo o valor de xn+1. Dessa forma não teremos mais um método implícito.
 <br>
-<img src="https://s16.postimg.org/g23v5l4wh/image.jpg" Alt="Metodo_Passos_Multiplos" height="100">
+O Preditor <br>	
+<img src="http://www.sciweavers.org/tex2img.php?eq=P_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28-9f_k_-_3%20%2B%2037f_k_-_2%20-%2059f_k_-_1%20%2B%2055f_k%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="P_k_+_1 = Y_k + \frac{h}{24}(-9f_k_-_3 + 37f_k_-_2 - 59f_k_-_1 + 55f_k)" width="411" height="43" /><br>
+O Corretor <br>
+<img src="http://www.sciweavers.org/tex2img.php?eq=Y_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28f_k_-_2%20-%205f_k_-_1%20%2B%2019f_k%20%2B%209f%28t_k_%2B_1%2CP_k_%2B_1%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" />
 
 ## As soluções
 ### Condições Iniciais

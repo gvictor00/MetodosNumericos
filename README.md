@@ -35,7 +35,7 @@ Escolhendo um valor h para tamanho de cada passo e atribuindo a cada passo um po
 
 ### Método de Euler Modificado 
 É possível notar que o erro no método de Euler é grande. Com o objetivo de diminuir este erro de aproximação, podemos utilizar o método de Euler melhorado ou método do Trapézio. Ele consiste em usar o Método de Euler como Preditor e fazer a corrteção atavés de uma nova equação. O Método de Euler Modificado também é conhecido como Runge-Kutta de 2ª ordem. <br><br>
-<img src="http://www.sciweavers.org/tex2img.php?eq=Y_m_%2B_1%20%3D%20Y_m%20%2B%20%5Cfrac%7Bf_m%2Ah%7D%7B2%7D%20%2B%20%5Cfrac%7Bf%28t_m%2Bh%2CY_m%20%2B%20f%28t_m%2Cy_m%29%29%2Ah%7D%7B2%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="Y_m_+_1 = Y_m + \frac{f_m*h}{2} + \frac{f(t_m+h,Y_m + f(t_m,y_m))*h}{2}" width="421" height="43" />
+<img src="http://latex.codecogs.com/gif.latex?Y_%7Bk&plus;1%7D%3DY_k&plus;%5Cfrac%7Bf%28t_k%2Cy_k%29h%7D%7B2%7D&plus;%5Cfrac%7Bf%28t_k&plus;h%2CY_k&plus;f%28t_k%2Cy_k%29h%29%7D%7B2%7D" align="center" border="0" alt="Y_m_+_1 = Y_m + \frac{f_m*h}{2} + \frac{f(t_m+h,Y_m + f(t_m,y_m))*h}{2}" width="421" height="43" />
 
 ### Runge Kutta
 O método mais preciso e mais utilizado é o método de Runge-Kutta de quarto grau. Ele nasce do método de Euler, sendo o Runge-Kutta de primeiro grau o próprio método de Euler. O Runge-Kutta de segundo grau é o método de Euler melhorado, como veremos a seguir. Concluiremos a seção com o Runge-Kutta de quarto grau, que é o método mais preciso para a obtenção de soluções aproximadas para um problema de valor inicial. Cada método do Runge-Kutta é uma comparação com um polinômio de Taylor conveniente, daí que surgem os graus em seus nomes. Quando comparado a um polinômio de grau 1, teremos o Runge-Kutta de primeiro grau. Ao fazermos essa comparação, o cálculo da derivada é eliminado, fazendo-se assim avaliações da função f em cada iteração.
@@ -49,7 +49,7 @@ Os métodos que veremos aqui, chamados de passos múltiplos, são bem precisos, 
 Com estes pontos conhecidos é possível calcular fn−3, fn−2, fn−1 e fn. Utilizando a fórmula de Adams-Bashforth, conseguimos estimar o valor de xn+1. Usando este valor encontrado, calculamos fn+1 e colocamos no método de Adams-Moulton, corrigindo o valor de xn+1. Dessa forma não teremos mais um método implícito.
 <br><br>
 O Preditor: <br>	
-<img src="http://www.sciweavers.org/tex2img.php?eq=P_k_%2B_1%20%3D%20Y_k%20%2B%20%5Cfrac%7Bh%7D%7B24%7D%28-9f_k_-_3%20%2B%2037f_k_-_2%20-%2059f_k_-_1%20%2B%2055f_k%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0" align="center" border="0" alt="P_k_+_1 = Y_k + \frac{h}{24}(-9f_k_-_3 + 37f_k_-_2 - 59f_k_-_1 + 55f_k)" width="411" height="43" /><br>
+<img src="http://latex.codecogs.com/gif.latex?P_%7Bk&plus;1%7D%3DY_k&plus;%5Cfrac%7Bh%7D%7B24%7D%28-9f_%7Bk-3%7D-37f_%7Bk-2%7D-59f_%7Bk-1%7D&plus;55f_%7Bk%7D%29" align="center" border="0" alt="P_k_+_1 = Y_k + \frac{h}{24}(-9f_k_-_3 + 37f_k_-_2 - 59f_k_-_1 + 55f_k)" width="411" height="43" /><br>
 O Corretor: <br>
 <img src="http://latex.codecogs.com/gif.latex?Y_%7Bk&plus;1%7D%3DY_k&plus;%5Cfrac%7Bh%7D%7B24%7D%28f_%7Bk-2%7D-5f_%7Bk-1%7D&plus;19f_k&plus;9f%28t_%7Bk&plus;1%7D%2CP_%7Bk&plus;1%7D%29%29" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" />
 

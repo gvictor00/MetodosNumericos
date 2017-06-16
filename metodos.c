@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 //======== Definição de todos os valores do problema =======
 double C = 3000;   		// Constante (População Inicial)
@@ -41,6 +42,7 @@ double metodo_euler () {  				//Método de Euler
 	double h = passo();
 	int i;
 
+	//printf("Entrou aqui com n = %d\n", n);
 	for ( i = 0; i < n; i++ ) {
 		Y += (h*f(X,Y));
 		X += h;
@@ -141,53 +143,67 @@ double metodo_passos_multiplos() 		//Adams-Bashforth-Moulton 4a Ordem
 
 void repErro(int var)
 {
-	double solucao = solucao();
-	double erro = 0;
+	double sol = solucao();
+	double erro = 1;
 	double met = 0;
-	n = 0;
+	n = 1;
+	time_t inicio, fim;
 
 	switch (var){
-		case 0:
-		while(erro > 0.0001)
+		case 0:	
+		printf("Calculando erro EULER...\n");
+		inicio = time(NULL);
+		while(isgreater(erro,0.001))
 		{
 			met = metodo_euler();
-			erro = fabs(met - solucao);
-			n = n+1;
+			erro = fabs(met - sol);
+			n = n+100;
 		}
-		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com EULER\n", n);
+		fim = time(NULL);
+		printf("Foram precisas %d repeticoes e %fms\n\n", n,difftime(fim,inicio));
 		break;
 
 		case 1:
+		printf("Calculando erro EULER MODIFICADO...\n");
+		inicio = time(NULL);
 		while(erro > 0.0001)
 		{
-			met = metodo_euler();
-			erro = fabs(met - solucao);
+			met = metodo_euler_modificado();
+			erro = fabs(met - sol);
 			n = n+1;
 		}
-		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com EULER MODIFICADO\n", n);
+		fim = time(NULL);
+		printf("Foram precisas %d repeticoes e %fms\n\n", n,difftime(fim,inicio));
 		break;
 
 		case 2:
+		printf("Calculando erro PASSOS MULTIPLOS...\n");
+		inicio = time(NULL);
 		while(erro > 0.0001)
 		{
 			met = metodo_passos_multiplos();
-			erro = fabs(met - solucao);
+			erro = fabs(met - sol);
 			n = n+1;
 		}
-		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com PASSOS MULTIPLOS\n", n);
+		fim = time(NULL);
+		printf("Foram precisas %d repeticoes e %fms\n\n", n,difftime(fim,inicio));
 		break;
 
 		case 3:
-		while(erro > 0.0001)
+		printf("Calculando erro RUNGE KUTTA...\n");
+		time(&inicio);
+		//inicio = time(NULL);
+		while(isgreater(erro,0.0001))
 		{
 			met = metodo_runge_kutta();
-			erro = fabs(met - solucao);
+			erro = fabs(met - sol);
 			n = n+1;
 		}
-		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com RUNGE KUTTA\n", n);
+		time(&fim);
+		//fim = time(NULL);
+		printf("Foram precisas %d repeticoes e %fms\n\n", n,difftime(fim,inicio));
 		break;
 	}
-	return n;
 }
 
 int main()
@@ -254,11 +270,17 @@ int main()
 		printf("--------------------------------------------------------------------\n");
 	}while(n>0);
 
+	// ============================================
+	// COMENTAR ESSE TRECHO PARA NÃO PERDER TEMPO!
+	// ============================================
     // Número de repetições para aproximar o erro à 0,0001
-	repErro(0);	// Euler
+	// /*
+	repErro(0);	// Euler - 0.001
 	repErro(1);	// Euler Modificado
 	repErro(2); // Passos Multiplos
 	repErro(3); // Runge Kutta
+	// */
+	// ============================================
 
 	return 0;
 }

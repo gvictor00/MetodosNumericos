@@ -57,3 +57,15 @@ O Corretor: <br>
 ### Condições Iniciais
 Tomando os valores de C = 3000, t = 2, k = 0.5493 e 100 subdivisões temos as seguintes soluções para os métodos apresentados:<br>
 ![Resultados](/resultados.jpg?raw=true)
+
+#### EULER
+Foram precisas 5431201 repeticoes e 1006.000000ms para um erro de 0.001
+
+#### EULER MODIFICADO
+Foram precisas 4461 repeticoes e 0.000000ms para um erro de 0,0001
+
+#### PASSOS MULTIPLOS
+Foram precisas 44 repeticoes e 0.000000ms para um erro de 0,0001
+
+#### RUNGE KUTTA
+Foram precisas 34 repeticoes e 0.000000ms para um erro de 0,0001

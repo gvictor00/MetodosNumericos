@@ -6,24 +6,26 @@
 #include <stdlib.h>
 #include <math.h>
 
-/////////Definição de todos os valores do problema/////
-double C = 3000;   							// Constante (População Inicial)
-double t = 2;   							// Tempo     
-double k = 0.5493;  						//Constante  (Taxa de crescimento/decaimento)
-double ti = 0;  							// Tempo inicial
-///////////////////////////////////////////////////////
+//======== Definição de todos os valores do problema =======
+double C = 3000;   		// Constante (População Inicial)
+double t = 2;   		// Tempo
+double k = 0.5493;  	// Constante  (Taxa de crescimento/decaimento)
+double ti = 0;  		// Tempo inicial
+//==========================================================
 int n = 0;
 
-//Solucao Analítica do problema de Dinamica populacional
+//Solucao Analítica do problema de Dinamica Populacional
 double solucao(){
 	return (C*exp(k*t));
 }
 
-double y_inicial(){							//Y inicial necessário para os cálculos dos métodos
+//Y inicial necessário para os cálculos dos métodos
+double y_inicial(){							
 	return (C*exp(k*ti));
 }
 
-double f (double X, double Y)				//Função F referente a equação diferencial do problema de Dinamica Populacional
+//Função F referente a equação diferencial do problema de Dinamica Populacional
+double f (double X, double Y)
 {
 	return (k*Y);
 }
@@ -33,7 +35,7 @@ double passo()
 	return (t-ti)/n;
 }
 
-double metodo_euler () {  			//Método de Euler
+double metodo_euler () {  				//Método de Euler
 	double Y = y_inicial();
 	double X = ti;
 	double h = passo();
@@ -65,7 +67,7 @@ double metodo_euler_modificado () { 	//Euler Modificado
 	return Y_atual;
 }
 
-double metodo_runge_kutta () { 		//Runge-Kutta
+double metodo_runge_kutta () { 			//Runge-Kutta
 	double Y = y_inicial();
 	double X = ti;
 	double h = passo();
@@ -85,7 +87,7 @@ double metodo_runge_kutta () { 		//Runge-Kutta
 	return Y;
 }
 
-double metodo_passos_multiplos() 	//Adams-Bashforth-Moulton 4a Ordem
+double metodo_passos_multiplos() 		//Adams-Bashforth-Moulton 4a Ordem
 {
 	//Variaveis auxiliares
 	int j = 0;
@@ -96,6 +98,9 @@ double metodo_passos_multiplos() 	//Adams-Bashforth-Moulton 4a Ordem
 
 	//Vetor de soluções
 	double x[n+1], y[n+1]; 
+
+	// Etapa para cálculo Preditor-Corretor
+	double yp, yc;
 
 	for(j=0;j<n+1;j++)
 	{
@@ -121,9 +126,6 @@ double metodo_passos_multiplos() 	//Adams-Bashforth-Moulton 4a Ordem
 		//=========================	
 	}
 
-	// Etapa para cálculo Preditor-Corretor
-	double yp, yc;
-
 	for(j=3;j<n;j++)
 	{
 		x[j+1] = x[j] + h;
@@ -137,66 +139,126 @@ double metodo_passos_multiplos() 	//Adams-Bashforth-Moulton 4a Ordem
 	return y[n];
 }
 
+void repErro(int var)
+{
+	double solucao = solucao();
+	double erro = 0;
+	double met = 0;
+	n = 0;
+
+	switch (var){
+		case 0:
+		while(erro > 0.0001)
+		{
+			met = metodo_euler();
+			erro = fabs(met - solucao);
+			n = n+1;
+		}
+		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com EULER\n", n);
+		break;
+
+		case 1:
+		while(erro > 0.0001)
+		{
+			met = metodo_euler();
+			erro = fabs(met - solucao);
+			n = n+1;
+		}
+		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com EULER MODIFICADO\n", n);
+		break;
+
+		case 2:
+		while(erro > 0.0001)
+		{
+			met = metodo_passos_multiplos();
+			erro = fabs(met - solucao);
+			n = n+1;
+		}
+		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com PASSOS MULTIPLOS\n", n);
+		break;
+
+		case 3:
+		while(erro > 0.0001)
+		{
+			met = metodo_runge_kutta();
+			erro = fabs(met - solucao);
+			n = n+1;
+		}
+		printf("Foram precisas %d repeticoes para aproximar o erro a 0,0001 com RUNGE KUTTA\n", n);
+		break;
+	}
+	return n;
+}
+
 int main()
 {
-    double erro; 							//Considerar erro ≤ 0,0001 
-    double res_e, res_em, res_pm, res_rk;
-    double sol;
-    printf("--------------------------------------------------------------------\n");
-    printf("O numero de subdivisoes: ");
-    scanf("%d", &n);																	//User define o número de subdvisoes e o programa executa.
-    printf("\n");
+	// Variáveis auxiliares
+	double erro;  
+	double res_e, res_em, res_pm, res_rk;
+	double sol;
 
-    sol = solucao();
-    printf("A solucao analitica: %.5lf\n\n", sol);
+	printf("--------------------------------------------------------------------\n");
+	printf("O numero de subdivisoes: ");
+	scanf("%d", &n);
+	printf("\n");
 
-    printf("  n\tEuler\t\tEuler Modif\tPassos-Mult.\tRunge-Kutta\n");
-    printf("--------------------------------------------------------------------\n");
-    do{
+	sol = solucao();
+	printf("A solucao analitica: %.5lf\n\n", sol);
 
-    	printf("%d\t", n);
-    	
-    	res_e = metodo_euler();
-    	res_em = metodo_euler_modificado();
-    	res_pm = metodo_passos_multiplos();
-    	res_rk = metodo_runge_kutta();
+	printf("  n\tEuler\t\tEuler Modif\tPassos-Mult.\tRunge-Kutta\n");
+	printf("--------------------------------------------------------------------\n");
+	do{
 
-    	printf("%.5lf\t%.5lf\t%.5lf\t%.5lf\t\n",res_e,res_em,res_pm,res_rk);
+		printf("%d\t", n);
 
-    	erro = fabs(sol - res_e);
-    	if(erro < 10){
+		res_e = metodo_euler();
+		res_em = metodo_euler_modificado();
+		res_pm = metodo_passos_multiplos();
+		res_rk = metodo_runge_kutta();
 
-    		printf("\t%.5f\t\t", erro);
-    	}
-    	else
-    	{
-    		printf("\t%.5f\t", erro);
-    	}
-    	
-    	erro = fabs(sol-res_em);
-    	if(erro < 10)
-    	{
-    		printf("%.5f\t\t", erro);
-    	}
-    	else
-    	{
-    		printf("%.5f\t", erro);
-    	}
+		printf("%.5lf\t%.5lf\t%.5lf\t%.5lf\t\n",res_e,res_em,res_pm,res_rk);
 
-    	erro = fabs(sol-res_pm);
-    	if(erro < 10)
-    	{
-    		printf("%.5f\t\t", erro);
-    	}
-    	else
-    	{
-    		printf("%.5f\t", erro);
-    	}
+		erro = fabs(sol - res_e);
+		if(erro < 10){
 
-    	printf("%.5f\n", fabs(sol-res_rk));
-    	n=n/2;
+			printf("\t%.5f\t\t", erro);
+		}
+		else
+		{
+			printf("\t%.5f\t", erro);
+		}
 
-    printf("--------------------------------------------------------------------\n");
-    }while(n>0);
-    return 0;
+		erro = fabs(sol-res_em);
+		if(erro < 10)
+		{
+			printf("%.5f\t\t", erro);
+		}
+		else
+		{
+			printf("%.5f\t", erro);
+		}
+
+		erro = fabs(sol-res_pm);
+		if(erro < 10)
+		{
+			printf("%.5f\t\t", erro);
+		}
+		else
+		{
+			printf("%.5f\t", erro);
+		}
+
+		printf("%.5f\n", fabs(sol-res_rk));
+		n=n/2;
+
+		printf("--------------------------------------------------------------------\n");
+	}while(n>0);
+
+    // Número de repetições para aproximar o erro à 0,0001
+	repErro(0);	// Euler
+	repErro(1);	// Euler Modificado
+	repErro(2); // Passos Multiplos
+	repErro(3); // Runge Kutta
+
+	return 0;
 }

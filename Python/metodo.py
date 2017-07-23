@@ -121,7 +121,7 @@ print("A solução é: \t %.4f" % solucao().real)
 print("--------------------------------------------------------------------\n");
 print("  n\tEuler\t\tEuler Modif\tPassos-Mult.\tRunge-Kutta\n");
 print("--------------------------------------------------------------------\n");
-print(n,"\t%.4f " % metodo_euler().real,
+print(n,"\t%.4f" % metodo_euler().real,
 	"\t%.4f" % metodo_euler_modificado().real,
 	"\t%.4f" % metodo_passos_multiplos().real,
 	"\t%.4f" % metodo_runge_kutta().real)

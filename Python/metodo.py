@@ -16,9 +16,11 @@ def solucao_inicial():
 def solucao():
 	return C*exp(k*t)
 
+# Função principal
 def f(X,Y):
 	return k*Y
 
+# Cálculo do passo
 def passo():
 	return (t-ti)/n
 
@@ -52,7 +54,7 @@ def metodo_euler_modificado():
 		X_atual = X_atual + h
 		i = i + 1
 
-		return Y_atual
+	return Y_atual
 
 # Método de Runge-Kutta
 def metodo_runge_kutta():

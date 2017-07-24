@@ -108,13 +108,13 @@ int main()
     double resposta_runge_kutta;
 
     printf("Digite as condicoes do problema\n");
-    printf("Taxa de entrada de sal: ");
+    printf("Taxa de entrada de sal (T0): ");
     scanf("%lf", &Ti);
-    printf("Taxa de saida de sal: ");
+    printf("Taxa de saida de sal (TF): ");
     scanf("%lf", &Tf);
     printf("Tempo: ");
     scanf("%lf", &t);
-    printf("A constante de decaimento: ");
+    printf("A constante de decaimento (0,1386): ");
     scanf("%lf", &C);
 
     do {

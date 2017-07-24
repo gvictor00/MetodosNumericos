@@ -7,3 +7,6 @@ Serão agrupados neste repositório soluções para problemas em que são empreg
  - Método de Euler Modificado;
  - Método de Adams-Bashforth-Moulton 4ª ordem; 
  - Método de Runge Kutta 4ª ordem.
+
+ ## Problemas resolvidos
+ - !(Dinâmica Populacional)[Dinamica_populacional/README.md]

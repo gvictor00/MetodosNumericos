@@ -51,5 +51,5 @@ O Corretor: <br>
  - [Dinâmica Populacional](Dinamica_populacional/README.md)
  - Circuitos RC 
  - Sistema Massa-Mola
- - [Lei de Resfriamento de Newton](http://www.academico.uema.br/DOWNLOAD/LeideresfriamentodeNewtonJP.pdf)
+ - [Lei de Resfriamento de Newton](Lei \de \Resfriamento/README.md)
  - [Mistura de Substâncias](Mistura_de_substancias/README.md)

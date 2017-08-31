@@ -1,27 +1,29 @@
-# Solução do problema de misturas
+# Solução do problema de Resfriamento de Newton
 
 from math import *
 from cmath import *
 
 #========== Definição das variáveis =========
-Ti = 50		   	# Tempo inicial
-Tf = 0.01  		# Tempo final
-C = -4900	  	# Constante
-t = 1			# Tempo
+T0 = 50		   	# Tempo inicial
+Tm = 0.01  		# Tempo final
+C = 0		  	# Constante da formula C = (T0 - Tm)
+k = 0.15	 	# Contante de resfriamento do material
+
+t = 3			# Tempo
 ti = 0	  		# Tempo inicial
 #============================================
 
-# Função F referente a equação diferencial do problema de Misturas
+# Função F referente a equação diferencial do problema de Resfriamento de Newton
 def solucao():
-	return (Ti/Tf + C*exp(-Tf*t))
+    return (C*exp((-1)*k*t)+Tm)
 
 # Y inicial necessário para os cálculos dos métodos
 def solucao_inicial():
-	return (Ti/Tf + C*exp(-Tf*ti))
+    return (C*exp((-1)*k*ti)+Tm);
 
 # Função principal
-def f(X,Y):
-	return Ti + (-Tf*Y)
+def f(X,T):
+    return (-1)*k*(T-Tm)
 
 # Cálculo do passo
 def passo():
@@ -121,6 +123,7 @@ def metodo_passos_multiplos():
 	return y[n]
 
 n = int(input("O número de subdivisões: "))
+C = T0 - Tm
 
 print("A solução é: \t %.5f" % solucao().real)
 print("--------------------------------------------------------------------\n");

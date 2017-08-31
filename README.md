@@ -48,8 +48,8 @@ O Corretor: <br>
 <img src="http://latex.codecogs.com/gif.latex?Y_%7Bk&plus;1%7D%3DY_k&plus;%5Cfrac%7Bh%7D%7B24%7D%28f_%7Bk-2%7D-5f_%7Bk-1%7D&plus;19f_k&plus;9f%28t_%7Bk&plus;1%7D%2CP_%7Bk&plus;1%7D%29%29" align="center" border="0" alt="Y_k_+_1 = Y_k + \frac{h}{24}(f_k_-_2 - 5f_k_-_1 + 19f_k + 9f(t_k_+_1,P_k_+_1))" width="435" height="43" />
 
  ## Problemas resolvidos
- - [Dinâmica Populacional](Dinamica_populacional/README.md)
+ - [Dinâmica Populacional](Dinamica%20populacional/README.md)
  - Circuitos RC 
  - Sistema Massa-Mola
  - [Lei de Resfriamento de Newton](Lei%20de%20resfriamento%20de%20Newton/README.md)
- - [Mistura de Substâncias](Mistura_de_substancias/README.md)
+ - [Mistura de Substâncias](Mistura%20de%20substancias/README.md)
